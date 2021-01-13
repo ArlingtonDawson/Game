@@ -359,3 +359,7 @@ D:\Projects\Game\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
 D:\Projects\Game\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\Projects\Game\obj\Debug\Assembly-CSharp.dll
 D:\Projects\Game\obj\Debug\Assembly-CSharp.pdb
+D:\Projects\Game\Temp\bin\Debug\Unity.Rendering.Hybrid.dll
+D:\Projects\Game\Temp\bin\Debug\Unity.Rendering.Hybrid.Editor.dll
+D:\Projects\Game\Temp\bin\Debug\Unity.Rendering.Hybrid.pdb
+D:\Projects\Game\Temp\bin\Debug\Unity.Rendering.Hybrid.Editor.pdb
