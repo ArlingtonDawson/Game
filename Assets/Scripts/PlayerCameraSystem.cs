@@ -11,22 +11,17 @@ public class PlayerCameraSystem : SystemBase
 {
     protected override void OnUpdate()
     {
-        // Assign values to local variables captured in your job here, so that it has
-        // everything it needs to do its work when it runs later.
-        // For example,
-        //     float deltaTime = Time.DeltaTime;
+        //Is there a better way?
+        Entity player = GetSingletonEntity<PlayerComponent>();
+        Translation playerTranslation = GetComponent<Translation>(player);
+        Rotation playerRotation = GetComponent<Rotation>(player);
 
-        // This declares a new kind of job, which is a unit of work to do.
-        // The job is declared as an Entities.ForEach with the target components as parameters,
-        // meaning it will process all entities in the world that have both
-        // Translation and Rotation components. Change it to process the component
-        // types you want.
-        
-        //Entity player = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>()).GetSingletonEntity();
-        
-        Entities.ForEach((in PhysicsMass mass, in PlayerComponent player) => {
-            RigidTransform localTransform = mass.Transform;
-            Debug.DrawRay(localTransform.pos, Vector3.forward);
-        }).Schedule();
+        Entities
+            .WithAll<Camera>()
+            .ForEach((Transform transform, ref Translation translation, ref Rotation rotation) =>
+            {
+                transform.position = playerTranslation.Value;
+                transform.rotation = playerRotation.Value;
+            }).WithoutBurst().Run();
     }
 }
