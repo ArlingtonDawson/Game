@@ -20,13 +20,12 @@ public class PlayerShootingSystem : SystemBase
     protected override void OnUpdate()
     {
         var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer().AsParallelWriter();
-        JobHandle jobHandle;
 
         if(Input.GetKey(KeyCode.Space))
         {
             Entities.WithAll<WeaponComponent>().WithNone<Firing>().ForEach((Entity e, int nativeThreadIndex) =>
                 {
-                    ecb.AddComponent(nativeThreadIndex, e, new Firing());
+                    ecb.AddComponent(nativeThreadIndex, e, new Firing { FireCountDown = 0 });
                 }).ScheduleParallel();
         } else
         {

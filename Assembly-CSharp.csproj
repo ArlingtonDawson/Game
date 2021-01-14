@@ -56,7 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\WeaponComponent.cs" />
+    <Compile Include="Assets\Scripts\Weapon\WeaponComponent.cs" />
     <Compile Include="Assets\Scripts\PlayerComponent.cs" />
     <Compile Include="Assets\Scripts\StartupBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\HealthComponent.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="Assets\Scripts\Movement\PlayerRotationSystem.cs" />
     <Compile Include="Assets\Scripts\SpawnerCreatorSystem.cs" />
     <Compile Include="Assets\Scripts\RotationComponent.cs" />
-    <Compile Include="Assets\Scripts\DamageComponent.cs" />
+    <Compile Include="Assets\Scripts\Weapon\DamageComponent.cs" />
     <Compile Include="Assets\Scripts\Movement\MovementComponent.cs" />
     <Compile Include="Assets\Scripts\LookAtComponent.cs" />
     <Compile Include="Assets\Scripts\InputComponent.cs" />
@@ -83,6 +83,10 @@
     <Compile Include="Assets\Scripts\TargetTypes\SpawnerComponent.cs" />
     <Compile Include="Assets\Scripts\PlayerCameraSystem.cs" />
     <Compile Include="Assets\Scripts\GameData\PlayerPrefabComponent.cs" />
+    <Compile Include="Assets\Scripts\Weapon\WeaponFiringSystem.cs" />
+    <Compile Include="Assets\Scripts\Weapon\WeaponReloadSystem.cs" />
+    <Compile Include="Assets\Scripts\Weapon\ProjectileComponent.cs" />
+    <Compile Include="Assets\Scripts\Weapon\ReloadComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

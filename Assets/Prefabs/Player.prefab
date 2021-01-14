@@ -335,7 +335,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf8dd6055f9a1346b57ea9a95ac9633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireTime: 0
   FireRate: 4
+  MaxAmmo: 100
+  CurrentAmmo: 100
+  Projectile:
+    Velocity: 0
+    Damage:
+      Value: 0
+      Type: 0
 --- !u!114 &8192305736844109673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,6 +650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Horizontal: 0
   Vertical: 0
+  XRotation: 0
+  YRotation: 0
 --- !u!114 &1509162449808445390
 MonoBehaviour:
   m_ObjectHideFlags: 0
