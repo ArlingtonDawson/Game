@@ -10,4 +10,6 @@ public struct InputComponent : IComponentData
 {
     public float Horizontal;
     public float Vertical;
+    public float XRotation;
+    public float YRotation;
 }
