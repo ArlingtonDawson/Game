@@ -5,4 +5,5 @@ using UnityEngine;
 
 public struct Firing : IComponentData
 {
+    public float FireCountDown;
 }

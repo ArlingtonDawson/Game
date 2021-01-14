@@ -6,5 +6,9 @@ using UnityEngine;
 [GenerateAuthoringComponent]
 public struct WeaponComponent :  IComponentData
 {
+    public float FireTime;
     public float FireRate;
+    public int MaxAmmo;
+    public int CurrentAmmo;
+    public ProjectileComponent Projectile;
 }
