@@ -68,7 +68,7 @@
     <Compile Include="Assets\Scripts\SpawnerSpawnSystem.cs" />
     <Compile Include="Assets\Scripts\Movement\PlayerRotationSystem.cs" />
     <Compile Include="Assets\Scripts\SpawnerCreatorSystem.cs" />
-    <Compile Include="Assets\Scripts\RotationComponent.cs" />
+    <Compile Include="Assets\Scripts\TurnRateComponent.cs" />
     <Compile Include="Assets\Scripts\Weapon\DamageComponent.cs" />
     <Compile Include="Assets\Scripts\Movement\MovementComponent.cs" />
     <Compile Include="Assets\Scripts\LookAtComponent.cs" />
@@ -87,6 +87,8 @@
     <Compile Include="Assets\Scripts\Weapon\WeaponReloadSystem.cs" />
     <Compile Include="Assets\Scripts\Weapon\ProjectileComponent.cs" />
     <Compile Include="Assets\Scripts\Weapon\ReloadComponent.cs" />
+    <Compile Include="Assets\Scripts\TargetTypes\GrabberComponent.cs" />
+    <Compile Include="Assets\Scripts\TargetComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

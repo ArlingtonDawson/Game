@@ -2,11 +2,10 @@
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
-using UnityEngine;
 
 [Serializable]
 [GenerateAuthoringComponent]
-public struct RotationComponent : IComponentData
+public struct TargetComponent : IComponentData
 {
-    public float Rate;
+    public Entity Entity;
 }
