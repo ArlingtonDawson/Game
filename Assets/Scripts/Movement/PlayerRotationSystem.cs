@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Physics;
+using Unity.Transforms;
 using UnityEngine;
 
 public class PlayerRotationSystem : ComponentSystem
@@ -10,10 +11,9 @@ public class PlayerRotationSystem : ComponentSystem
     {
         var deltaTime = Time.DeltaTime;
 
-        Entities.ForEach((ref InputComponent inputComponent, ref PhysicsVelocity velocity) =>
+        Entities.WithAll<PlayerComponent>().ForEach((ref InputComponent inputComponent, ref Rotation rotation) =>
         {
-            velocity.Angular.y = inputComponent.XRotation;
-            velocity.Angular.x = inputComponent.YRotation;
+            rotation.Value *= Quaternion.Euler(inputComponent.YRotation, inputComponent.XRotation, 0);
         });
     }
 }
