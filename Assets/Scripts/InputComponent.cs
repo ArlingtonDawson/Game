@@ -8,8 +8,8 @@ using System;
 [GenerateAuthoringComponent]
 public struct InputComponent : IComponentData
 {
-    public float Horizontal;
-    public float Vertical;
+    public float FowardBack;
+    public float LeftRight;
     public float XRotation;
     public float YRotation;
 }
