@@ -4,6 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 
 [Serializable]
+[GenerateAuthoringComponent]
 public struct ProjectileComponent : IComponentData
 {
     public float Velocity;
