@@ -340,10 +340,11 @@ MonoBehaviour:
   MaxAmmo: 100
   CurrentAmmo: 100
   Projectile:
-    Velocity: 0
+    Velocity: 100
     Damage:
       Value: 0
       Type: 0
+  ProjectilePrefab: {fileID: 4146936475721356343, guid: 7286f9382853b0c408ec87c25b8f7acc, type: 3}
 --- !u!114 &8192305736844109673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,8 +649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9ee568289c3ab4cad66a5877dd4124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Horizontal: 0
-  Vertical: 0
+  FowardBack: 0
+  LeftRight: 0
   XRotation: 0
   YRotation: 0
 --- !u!114 &1509162449808445390

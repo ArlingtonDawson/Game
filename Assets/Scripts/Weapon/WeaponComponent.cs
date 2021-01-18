@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
+[Serializable]
 [GenerateAuthoringComponent]
 public struct WeaponComponent :  IComponentData
 {
@@ -11,4 +13,5 @@ public struct WeaponComponent :  IComponentData
     public int MaxAmmo;
     public int CurrentAmmo;
     public ProjectileComponent Projectile;
+    public Entity ProjectilePrefab;
 }
