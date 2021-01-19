@@ -18,6 +18,8 @@ public class InputSystem : ComponentSystem
             inputComponent.LeftRight = leftRight;
             inputComponent.XRotation = xRotation;
             inputComponent.YRotation = yRotation;
+            inputComponent.Reload = Input.GetKey(KeyCode.R);
+            inputComponent.Fire = Input.GetMouseButton(0);
         });
     }
 }

@@ -23,7 +23,7 @@ public class PlayerShootingSystem : SystemBase
 
         if(Input.GetKey(KeyCode.Space))
         {
-            Entities.WithAll<WeaponComponent>().WithNone<Firing>().ForEach((Entity e, int nativeThreadIndex) =>
+            Entities.WithAll<WeaponComponent>().WithNone<Firing, ReloadComponent>().ForEach((Entity e, int nativeThreadIndex) =>
                 {
                     ecb.AddComponent(nativeThreadIndex, e, new Firing { FireCountDown = 0 });
                 }).ScheduleParallel();
@@ -32,6 +32,16 @@ public class PlayerShootingSystem : SystemBase
             Entities.WithAll<WeaponComponent, Firing>().ForEach((Entity e, int nativeThreadIndex) =>
             {
                 ecb.RemoveComponent(nativeThreadIndex, e, typeof(Firing));
+            }).ScheduleParallel();
+        }
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            Entities.WithAll<WeaponComponent>().WithNone<ReloadComponent>().ForEach((Entity e, int nativeThreadIndex, WeaponComponent weapon) =>
+            {
+                ecb.AddComponent(nativeThreadIndex, e, new ReloadComponent { 
+                    ReloadTime = weapon.ReloadTime
+                });
             }).ScheduleParallel();
         }
 

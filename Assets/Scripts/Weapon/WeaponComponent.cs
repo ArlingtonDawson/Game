@@ -12,6 +12,9 @@ public struct WeaponComponent :  IComponentData
     public float FireRate;
     public int MaxAmmo;
     public int CurrentAmmo;
+    public float ReloadTime;
     public ProjectileComponent Projectile;
     public Entity ProjectilePrefab;
+
+    
 }
