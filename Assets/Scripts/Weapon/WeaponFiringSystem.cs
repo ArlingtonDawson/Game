@@ -27,7 +27,7 @@ public class WeaponFiringSystem : SystemBase
         float deltaTime = Time.DeltaTime;
         EntityCommandBuffer.ParallelWriter ecb = m_EndSimulationEcbSystem.CreateCommandBuffer().AsParallelWriter();
 
-        Entities.ForEach((int nativeThreadIndex, LocalToWorld world, ref Firing firing, ref WeaponComponent weapon) => {
+        Entities.WithNone<ReloadComponent>().ForEach((int nativeThreadIndex, LocalToWorld world, ref Firing firing, ref WeaponComponent weapon) => {
             if(weapon.CurrentAmmo > 0)
             {
                 firing.FireCountDown -= deltaTime;

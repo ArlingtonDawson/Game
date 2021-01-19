@@ -26,6 +26,7 @@ public class WeaponReloadSystem : SystemBase
             reload.ReloadTime -= deltaTime;
             if(reload.ReloadTime < 0)
             {
+                weapon.CurrentAmmo = weapon.MaxAmmo;
                 ecb.RemoveComponent<ReloadComponent>(nativeThreadIndex, entity);
             }
         }).Schedule();

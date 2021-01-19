@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnTimer: 0
   TargetType: {fileID: 6931946672064845646, guid: cad4af8ce92f603409471eab841834b1, type: 3}
-  Rate: 0.5
+  Rate: 0.002
 --- !u!114 &-5939347808569384612
 MonoBehaviour:
   m_ObjectHideFlags: 0

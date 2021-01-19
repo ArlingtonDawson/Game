@@ -12,4 +12,6 @@ public struct InputComponent : IComponentData
     public float LeftRight;
     public float XRotation;
     public float YRotation;
+    public bool Reload;
+    public bool Fire;
 }

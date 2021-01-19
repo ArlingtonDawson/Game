@@ -336,9 +336,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireTime: 0
-  FireRate: 4
+  FireRate: 0.25
   MaxAmmo: 100
   CurrentAmmo: 100
+  ReloadTime: 2
   Projectile:
     Velocity: 100
     Damage:
