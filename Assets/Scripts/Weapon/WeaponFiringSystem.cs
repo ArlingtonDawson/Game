@@ -8,10 +8,15 @@ using Unity.Physics;
 using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
+using static AmmoDisplayHandler;
 using Collider = Unity.Physics.Collider;
 
 public class WeaponFiringSystem : SystemBase
 {
+    public event EventHandler<OnAmmoDiplayChangeArgs> OnAmmoChange;
+    public struct OnAmmoChangedEvent : IComponentData { public int CurrentAmmo; public int MaxAmmo; }
+    public DOTSEvents_NextFrame<OnAmmoChangedEvent> dotsEvents;
+
     private EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
 
     protected override void OnCreate()
@@ -20,12 +25,15 @@ public class WeaponFiringSystem : SystemBase
         // Find the ECB system once and store it for later usage
         m_EndSimulationEcbSystem = World
             .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+
+        dotsEvents = new DOTSEvents_NextFrame<OnAmmoChangedEvent>(World);
     }
 
     protected override void OnUpdate()
     {
         float deltaTime = Time.DeltaTime;
         EntityCommandBuffer.ParallelWriter ecb = m_EndSimulationEcbSystem.CreateCommandBuffer().AsParallelWriter();
+        DOTSEvents_NextFrame<OnAmmoChangedEvent>.EventTrigger eventTrigger = dotsEvents.GetEventTrigger();
 
         Entities.WithNone<ReloadComponent>().ForEach((int nativeThreadIndex, LocalToWorld world, ref Firing firing, ref WeaponComponent weapon) => {
             if(weapon.CurrentAmmo > 0)
@@ -45,12 +53,16 @@ public class WeaponFiringSystem : SystemBase
                         Linear = new float3(0,0, weapon.Projectile.Velocity),
                         Angular = float3.zero
                     });
-                    Debug.Log("Create Projectile");
 
                     weapon.CurrentAmmo--;
+                    eventTrigger.TriggerEvent(nativeThreadIndex, new OnAmmoChangedEvent { CurrentAmmo = weapon.CurrentAmmo, MaxAmmo = weapon.MaxAmmo });
                 }
             }
         }).Schedule();
+
+        dotsEvents.CaptureEvents(eventTrigger, this.Dependency, (OnAmmoChangedEvent onAmmoChangedEvent) => {
+            OnAmmoChange?.Invoke(this, new OnAmmoDiplayChangeArgs { CurrentAmmo = onAmmoChangedEvent.CurrentAmmo, MaxAmmo = onAmmoChangedEvent.MaxAmmo });
+        });
 
         m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
     }

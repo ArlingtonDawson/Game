@@ -19,9 +19,11 @@ public class PlayerShootingSystem : SystemBase
 
     protected override void OnUpdate()
     {
-        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer().AsParallelWriter();
+        EntityCommandBuffer.ParallelWriter ecb = m_EndSimulationEcbSystem.CreateCommandBuffer().AsParallelWriter();
+        Entity player = GetSingletonEntity<PlayerComponent>();
+        InputComponent playerInput = GetComponent<InputComponent>(player);
 
-        if(Input.GetKey(KeyCode.Space))
+        if (playerInput.Fire)
         {
             Entities.WithAll<WeaponComponent>().WithNone<Firing, ReloadComponent>().ForEach((Entity e, int nativeThreadIndex) =>
                 {
@@ -35,7 +37,7 @@ public class PlayerShootingSystem : SystemBase
             }).ScheduleParallel();
         }
 
-        if (Input.GetKey(KeyCode.R))
+        if (playerInput.Reload)
         {
             Entities.WithAll<WeaponComponent>().WithNone<ReloadComponent>().ForEach((Entity e, int nativeThreadIndex, WeaponComponent weapon) =>
             {
